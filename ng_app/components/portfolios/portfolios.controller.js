@@ -69,8 +69,8 @@
                 Materialize.toast("Successfully executed!" + JSON.stringify(data), 4000, "cyan");
                 _this.fetchPortfolios();
             },
-            function error() {
-                Materialize.toast("Couldn't add portfolios!", 4000, "red")
+            function error(data) {
+                Materialize.toast(JSON.stringify(data), 10000, "red")
             });
         }
 

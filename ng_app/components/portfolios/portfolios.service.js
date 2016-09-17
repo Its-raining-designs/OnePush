@@ -53,11 +53,29 @@
                 }
             }
             $http(req).then(function (response) {
-                def.resolve({
+                if(response.status==200&&response.data.status==403){
+                    def.reject({
+                        portfolio: "Error!" + response.data.message
+                    });
+
+                }else if(response.status==200&&response.data.status==200) {
+
+                    def.resolve({
+                        portfolio:  "Success!"+ response.data.message
+                    });
+
+                }else {
+
+                    def.resolve({
+                        portfolio: response.data
+                    });
+
+                }
+
+            }, function (arg) {
+                def.reject({
                     portfolio: response.data
                 });
-            }, function (arg) {
-                def.reject(arg.data);
             });
 
             return def.promise;
