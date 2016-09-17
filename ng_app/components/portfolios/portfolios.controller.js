@@ -65,7 +65,7 @@
             
             var promiseObj = PortfoliosService.pushPortfolio(_this.newPortfolio);
             promiseObj.then(function success(data) {
-                //$('#onepush-modal').closeModal();
+                $('#onepush-modal').closeModal();
                 Materialize.toast("Successfully executed!" + JSON.stringify(data), 4000, "cyan");
                 _this.fetchPortfolios();
             },
